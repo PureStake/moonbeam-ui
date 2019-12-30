@@ -12,7 +12,7 @@ The code can be installed using [git](https://git-scm.com/) and [yarn](https://y
 ```bash
 # Clone the repository
 git clone https://github.com/PureStake/moonbeam-ui.git
-cd ./substrate-front-end-template
+cd ./moonbeam-ui
 ```
 
 ```bash
