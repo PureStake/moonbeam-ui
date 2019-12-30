@@ -1,31 +1,24 @@
-# Substrate Front End Template
+# Moonbeam UI Prototype
 
-This template allows you to create a front-end application that connects to a
-[Substrate](https://github.com/paritytech/substrate) node back-end with minimal
-configuration. To learn about Substrate itself, visit the
-[Substrate Developer Hub](https://substrate.dev).
+This is a prototype UI for Moonbeam Dex.  It works in conjunction with and connects to Moonbeam (https://github.com/PureStake/moonbeam).
 
-The template is built with [Create React App](https://github.com/facebook/create-react-app)
-and [Polkadot js API](https://polkadot.js.org/api/). Familiarity with these tools
-will be helpful, but the template strives to be self-explanatory. To learn how
-this template was built, visit the
-[Substrate Front-End Tutorial](https://substrate.dev/docs/en/tutorials/substrate-front-end/).
+The prototype is built using the substrate-ui-template which in turn is created with [Create React App](https://github.com/facebook/create-react-app)
+and [Polkadot js API](https://polkadot.js.org/api/). 
 
-## Using The Template
-
-### Installation
+## Installation
 
 The code can be installed using [git](https://git-scm.com/) and [yarn](https://yarnpkg.com/).
 
 ```bash
 # Clone the repository
-git clone https://substrate-developer-hub/substrate-front-end-template.git
+git clone https://github.com/PureStake/moonbeam-ui.git
 cd ./substrate-front-end-template
 ```
 
 ```bash
 yarn install
 ```
+Note: you will need appropriate github permissions in this repo for these commands to work.
 
 ## Usage
 
@@ -44,7 +37,7 @@ and open `build/index.html` in your favorite browser.
 
 ## Configuration
 
-The template's configuration is stored in the `src/config` directory, with
+The app's configuration is stored in the `src/config` directory, with
 `common.json` being loaded first, then the environment-specific json file,
 and finally environment variables, with precedence.
 
@@ -70,45 +63,16 @@ When writing and deploying your own front end, you should configure:
 * `DEVELOPMENT_KEYRING` in `src/config/common.json` be set to `false`.
   See [Keyring](https://polkadot.js.org/api/start/keyring.html).
 
-## Reusable Components
+## Moonbeam Prototype Dex UI Quickstart
 
-### useSubstrate Custom Hook
-
-The custom hook `useSubstrate` provides access to the Polkadot js API and thus the
-keyring and the blockchain itself. Specifically it exposes this API.
-
-```js
-{
-  socket,
-  types,
-  keyring,
-  keyringState,
-  api,
-  apiState,
-}
-```
-
-- `socket` - The remote provider socket it is connecting to.
-- `types` - The custom types used in the connected node.
-- `keyring` - A keyring of accounts available to the user.
-- `keyringState` - One of `"READY"` or `"ERROR"` states. `keyring` is valid
-only when `keyringState === "READY"`.
-- `api` - The remote api to the connected node.
-- `apiState` - One of `"CONNECTING"`, `"READY"`, or `"ERROR"` states. `api` is valid
-only when `apiState === "READY"`.
+To use the UI, you need to do the following:
+* Build and start a Moonbeam node (https://github.com/PureStake/moonbeam)
+* Build and start a Moonbeam UI with yarn start
+* Point your browser at http://localhost:8000
+* In order to start using the Dex, you need to set Glimer and Token balances for a user (e.g. Alice).  
+* To do this, use the Sudo module from the polkadot-js apps ui, and call the setGlmrBalance and setTokenBalance functions.
+* Once you have GLMR and TOKEN balances, you can deposit liquidity into the exchange.
+* After depositing liquidity, you can try trading GLMR to TOKEN and TOKEN to GLMR.
+* You can withdraw liquidity from the exchange at any time.
 
 
-### TxButton Component
-
-The [TxButton](./src/substrate-lib/components/TxButton.js) handles basic
-[query](https://polkadot.js.org/api/start/api.query.html) and
-[transaction](https://polkadot.js.org/api/start/api.tx.html) requests to the
-connected node. You can reuse this component for a wide variety of queries and
-transactions. See [src/Transfer.js](./src/Transfer.js) for a transaction example
-and [src/ChainState.js](./src/ChainState.js) for a query example.
-
-### Account Selector
-
-The [Account Selector](./src/AccountSelector.js) provides the user with a unified way to
-select their account from a keyring. If the Balances module is installed in the runtime,
-it also displays the user's token balance. It is included in the template already.
