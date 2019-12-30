@@ -32,10 +32,7 @@ export default function NodeInfo (props) {
             <span>{nodeInfo.chain}</span>
           </Card.Meta>
           <Card.Description>
-            Built using the{' '}
-            <a href='https://github.com/substrate-developer-hub/substrate-front-end-template'>
-              Substrate Front End Template
-            </a>
+            Prototype Interface for Moonbeam Dex
           </Card.Description>
         </Card.Content>
         <Card.Content extra>

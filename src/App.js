@@ -6,20 +6,30 @@ import { SubstrateContextProvider, useSubstrate } from './substrate-lib';
 import { DeveloperConsole } from './substrate-lib/components';
 
 import AccountSelector from './AccountSelector';
-import Balances from './Balances';
+// import Balances from './Balances';
 import BlockNumber from './BlockNumber';
-import ChainState from './ChainState';
+// import ChainState from './ChainState';
+import DepositLiquidity from './DepositLiquidity';
 import Events from './Events';
-import Extrinsics from './Extrinsics';
-import Metadata from './Metadata';
+// import Extrinsics from './Extrinsics';
+import GlmrBalances from './GlmrBalances';
+import LiquidBalances from './LiquidBalances';
+// import Metadata from './Metadata';
 import NodeInfo from './NodeInfo';
-import TemplateModule from './TemplateModule';
-import Transfer from './Transfer';
-import Upgrade from './Upgrade';
+import Prices from './Prices';
+import Reserves from './Reserves';
+// import TemplateModule from './TemplateModule';
+import TokenBalances from './TokenBalances';
+import TradeGlmrToToken from './TradeGlmrToToken';
+import TradeTokenToGlmr from './TradeTokenToGlmr';
+// import Transfer from './Transfer';
+// import Upgrade from './Upgrade';
+import WithdrawLiquidity from './WithdrawLiquidity';
 
 function Main () {
   const [accountAddress, setAccountAddress] = useState(null);
   const { apiState, keyring, keyringState } = useSubstrate();
+  // const { apiState, keyringState } = useSubstrate();
   const accountPair =
     accountAddress &&
     keyringState === 'READY' &&
@@ -51,24 +61,26 @@ function Main () {
         <Grid stackable columns='equal'>
           <Grid.Row stretched>
             <NodeInfo />
-            <Metadata />
             <BlockNumber />
             <BlockNumber finalized />
           </Grid.Row>
           <Grid.Row stretched>
-            <Balances />
+            <LiquidBalances accountAddress={accountAddress} />
+            <GlmrBalances accountAddress={accountAddress} />
+            <TokenBalances accountAddress={accountAddress} />
           </Grid.Row>
           <Grid.Row>
-            <Transfer accountPair={accountPair} />
-            <Upgrade accountPair={accountPair} />
+            <Prices />
+            <TradeTokenToGlmr accountPair={accountPair} />
+            <TradeGlmrToToken accountPair={accountPair} />
           </Grid.Row>
           <Grid.Row>
-            <Extrinsics accountPair={accountPair} />
-            <ChainState />
+            <Reserves />
+            <DepositLiquidity accountPair={accountPair} />
+            <WithdrawLiquidity accountPair={accountPair} />
+          </Grid.Row>
+          <Grid.Row stretched>
             <Events />
-          </Grid.Row>
-          <Grid.Row>
-            <TemplateModule accountPair={accountPair} />
           </Grid.Row>
         </Grid>
         <DeveloperConsole />

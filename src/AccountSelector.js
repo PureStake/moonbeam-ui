@@ -52,7 +52,7 @@ export default function AccountSelector (props) {
     >
       <Container>
         <Menu.Menu>
-          <Image src='Substrate-Logo.png' size='mini' />
+          <Image src='PureStake-Logo-Smaller.png' />
         </Menu.Menu>
         <Menu.Menu position='right'>
           <Icon
