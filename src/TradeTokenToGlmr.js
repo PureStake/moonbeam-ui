@@ -1,3 +1,4 @@
+/* global BigInt */
 import React, { useState } from 'react';
 import { Form, Input, Grid } from 'semantic-ui-react';
 
@@ -21,7 +22,7 @@ function Main (props) {
       <Form>
         <Form.Field>
           <Input
-            fluid label='picoTOKEN to spend' type='number'
+            fluid label='TOKEN to spend' type='number'
             state='amount' onChange={onChange}
           />
         </Form.Field>
@@ -32,7 +33,7 @@ function Main (props) {
             setStatus={setStatus}
             type='TRANSACTION'
             attrs={{
-              params: [amount],
+              params: [BigInt(amount * 1000000000000)],
               tx: api.tx.moonbeam.tradeTokenToGlmr
             }}
           />

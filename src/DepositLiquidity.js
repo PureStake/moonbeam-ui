@@ -1,3 +1,4 @@
+/* global BigInt */
 import React, { useState } from 'react';
 import { Form, Input, Grid } from 'semantic-ui-react';
 
@@ -7,7 +8,7 @@ import { TxButton } from './substrate-lib/components';
 function Main (props) {
   const { api } = useSubstrate();
   const [status, setStatus] = useState(null);
-  const [formState, setFormState] = useState({ amount: 0 });
+  const [formState, setFormState] = useState({ glmrAmount: 0, tokenAmount: 0 });
   const { accountPair } = props;
 
   const onChange = (_, data) =>
@@ -21,13 +22,13 @@ function Main (props) {
       <Form>
         <Form.Field>
           <Input
-            fluid label='picoGLMR to deposit' type='number'
+            fluid label='GLMR to deposit' type='number'
             state='glmrAmount' onChange={onChange}
           />
         </Form.Field>
         <Form.Field>
           <Input
-            fluid label='picoTOKEN to deposit' type='number'
+            fluid label='TOKEN to deposit' type='number'
             state='tokenAmount' onChange={onChange}
           />
         </Form.Field>
@@ -38,7 +39,7 @@ function Main (props) {
             setStatus={setStatus}
             type='TRANSACTION'
             attrs={{
-              params: [glmrAmount, tokenAmount],
+              params: [BigInt(glmrAmount * 1000000000000), BigInt(tokenAmount * 1000000000000)],
               tx: api.tx.moonbeam.depositLiquidity
             }}
           />
