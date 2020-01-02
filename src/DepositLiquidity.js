@@ -50,8 +50,8 @@ function Main (props) {
   );
 }
 
-export default function TradeGlmrToToken (props) {
+export default function DespositLiquidity (props) {
   const { api } = useSubstrate();
-  return (api.tx.moonbeam && api.tx.moonbeam.tradeGlmrToToken
+  return (api.tx.moonbeam && api.tx.moonbeam.depositLiquidity
     ? <Main {...props} /> : null);
 }
