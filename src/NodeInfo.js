@@ -32,7 +32,7 @@ export default function NodeInfo (props) {
             <span>{nodeInfo.chain}</span>
           </Card.Meta>
           <Card.Description>
-            Prototype Interface for Moonbeam Dex
+            Proof of Concept Interface for Moonbeam
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
