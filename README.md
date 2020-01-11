@@ -1,6 +1,6 @@
-# Moonbeam UI Prototype
+# Moonbeam UI Proof of Concept
 
-This is a prototype UI for Moonbeam Dex.  It works in conjunction with and connects to Moonbeam (https://github.com/PureStake/moonbeam).
+This is a proof of concept UI for Moonbeam.  It works in conjunction with and connects to Moonbeam (https://github.com/PureStake/moonbeam).
 
 The prototype is built using the substrate-ui-template which in turn is created with [Create React App](https://github.com/facebook/create-react-app)
 and [Polkadot js API](https://polkadot.js.org/api/). 
@@ -11,18 +11,17 @@ The code can be installed using [git](https://git-scm.com/) and [yarn](https://y
 
 ```bash
 # Clone the repository
-git clone git@github.com:PureStake/moonbeam-ui.git
+git clone https://github.com/PureStake/moonbeam-ui
 cd ./moonbeam-ui
 ```
 
 ```bash
 yarn install
 ```
-Note: you will need appropriate github permissions in this repo for these commands to work.
 
 ## Usage
 
-You can start the template in development mode to connect to a locally running node
+You can start the project in development mode to connect to a locally running node
 
 ```bash
 yarn start
@@ -63,16 +62,18 @@ When writing and deploying your own front end, you should configure:
 * `DEVELOPMENT_KEYRING` in `src/config/common.json` be set to `false`.
   See [Keyring](https://polkadot.js.org/api/start/keyring.html).
 
-## Moonbeam Prototype Dex UI Quickstart
+## Moonbeam Prototype UI Quickstart
 
 To use the UI, you need to do the following:
 * Build and start a Moonbeam node (https://github.com/PureStake/moonbeam)
 * Build and start a Moonbeam UI with yarn start
 * Point your browser at http://localhost:8000
-* In order to start using the Dex, you need to set Glimer and Token balances for a user (e.g. Alice).  
+* In order to start using the application, you need to set GLMR and Token balances for a user (e.g. Alice).  
 * To do this, use the Sudo module from the polkadot-js apps ui, and call the setGlmrBalance and setTokenBalance functions.
 * Once you have GLMR and TOKEN balances, you can deposit liquidity into the exchange.
+* The very first liquidity deposit has to specify a number of both GLMR and Tokens.  Once there are reserves in the exchange, you only specify a GLMR amount.
 * After depositing liquidity, you can try trading GLMR to TOKEN and TOKEN to GLMR.
 * You can withdraw liquidity from the exchange at any time.
+* NOTE: the underlying currency of this blockchain is GLMR, but I haven't wired up the GLMR you see in the app to the underlying currency system.  What this means is that e.g. the balance you see in the upper right hand corner next to the account selector is totally separate from and doesn't reflect the GLMR balances in the application.
 
 
