@@ -1,3 +1,13 @@
+# Archived
+
+This repository has been archived and is read-only. Moonbeam is currently being maintained [here](https://github.com/PureStake/moonbeam).
+
+Moonbeam is an Ethereum-compatible smart contract platform for building interoperable applications on Polkadot.
+
+More information: https://moonbeam.network/
+
+Built by [PureStake](https://purestake.com).
+
 # Moonbeam UI Proof of Concept
 
 This is a proof of concept UI for Moonbeam.  It works in conjunction with and connects to Moonbeam (https://github.com/PureStake/moonbeam).
